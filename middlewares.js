@@ -8,6 +8,7 @@ const { getDiscordWebhookById } = require("./api/webhooks/webhook.controller");
 const { getAdmin } = require("./api/admin/admin.controller");
 
 function databaseStatus(req, res, next) {
+  console.log("Database status: ", req.app.settings.database);
   if (typeof req.app.settings.database === "undefined")
     return next(new Error(errorMessages.INTERNAL));
   if (!req.app.settings.database)
