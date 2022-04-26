@@ -65,7 +65,7 @@ app.use(
     cookie: {
       secure: WEB_SERVER.ENV === "production" ? true : false,
       httpOnly: WEB_SERVER.ENV === "production" ? true : false,
-      // sameSite: 'none', //on production
+      sameSite: "none", //on production
       maxAge: 1000 * 60 * 60 * 24 * 14, // Two Weeks
     },
   })
