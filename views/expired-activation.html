@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Activation</title>
+    <script defer>
+        // setTimeout(() => {
+        //     window.location.replace('https://google.com')
+        // }, 3000)
+
+    </script>
+
+</head>
+
+<style>
+    html {
+        background-color: var(--light-gray);
+        height: 100vh;
+    }
+
+
+    :root {
+        font-family: 'poppins';
+        --primary-color: #f10041;
+        --secondary-color: #07b85c;
+        --dark-white: #c8c8c8;
+        --dark-black: #0b0b0e;
+        --bg-dark: #1a1f27;
+        --bg-darker: #151920;
+        --bg-darkest: #0b0d13;
+        --info: #339fde;
+        --dark-gray: #1e242b;
+        --light-gray: #21282f;
+    }
+
+    body {
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        justify-items: center;
+        background-color: var(--bg-darker);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        height: 100%;
+        flex-grow: 1;
+        padding: 1rem 14rem 1rem 14rem;
+        display: flex;
+        flex-direction: column;
+        background-color: var(--bg-darker);
+        filter: brightness(110%);
+    }
+
+    .container-content {
+        padding: 4rem 0rem 0rem 0rem;
+        flex-grow: 1;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .description {
+        margin: 16px 0px 16px 0px;
+        align-self: flex-start;
+    }
+
+    .description>p {
+        font-size: 14px;
+    }
+
+    .description-header {
+        font-size: x-large;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .hr {
+        width: 100%;
+        opacity: 10;
+        border-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .header {
+        position: relative;
+        color: var(--primary-color);
+        max-width: fit-content;
+        text-decoration: none;
+        font-size: 3rem;
+        letter-spacing: 0.12rem;
+        display: flex;
+        justify-items: center;
+        align-items: center;
+        flex-direction: row;
+        align-self: center;
+        text-transform: uppercase;
+    }
+
+    .header-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sub-header {
+        padding: 12px 0px;
+        color: var(--dark-white);
+        font-size: 0.75rem;
+        text-align: center;
+    }
+
+    .header-subtitle {
+        position: absolute;
+        opacity: 30%;
+        top: 60%;
+        right: -35px;
+        transform: translateY(-50%);
+        color: var(--dark-white);
+        font-size: 1rem;
+        letter-spacing: initial;
+        font-style: italic;
+    }
+
+    .header div {
+        margin: 0px 16px;
+    }
+
+    .activate-btn {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+        max-width: min-content;
+        font-weight: 600;
+        background-color: var(--secondary-color);
+        text-decoration: none;
+        color: var(--dark-black);
+        white-space: nowrap;
+        align-self: flex-start;
+        padding: 8px 14px;
+        border-radius: 8px;
+        align-items: center;
+    }
+
+    .activate-btn>* {
+        margin: 0px 6px;
+    }
+
+    .activate-btn-icon {
+        width: 28px;
+        height: 28px;
+        padding-bottom: 1px;
+    }
+
+    .option {
+        padding-left: 6px;
+        font-size: 0.85rem;
+        color: var(--dark-white);
+        align-self: flex-start;
+    }
+
+    .option-text {
+        margin-left: 0.75rem;
+    }
+
+    .option-url {
+        font-size: 0.95rem;
+        font-style: italic;
+        margin-top: 8px;
+        margin-bottom: 2rem;
+        padding: 8px;
+        border-radius: 8px;
+        background-color: var(--bg-darker);
+        max-width: min-content;
+        white-space: pre-line;
+    }
+
+    .footer {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.7rem;
+        align-self: center;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 4rem;
+    }
+
+    .note {
+        padding: 1rem 0rem;
+        font-size: 0.8rem;
+        color: var(--info);
+        font-weight: 300;
+    }
+
+    .opaquelabs {
+        color: var(--info);
+    }
+
+    @media (min-width: 1900px) {
+        .container {
+            max-width: 50%;
+            padding: 1rem 10rem 1rem 10rem;
+        }
+    }
+
+    @media (min-width: 1200px) {
+
+        .footer>p {
+            font-size: 13px;
+        }
+
+        .description>p {
+            font-size: 18px;
+        }
+
+        .header-logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .sub-header {
+            font-size: 0.85rem;
+        }
+
+        .container {
+            max-width: 60%;
+            padding: 1rem 10rem 1rem 10rem;
+        }
+    }
+
+    @media (max-width: 750px) {
+
+
+        .container {
+            padding: 1rem 8rem 1rem 8rem;
+        }
+    }
+
+    @media (max-width: 570px) {
+
+
+        .container {
+            padding: 1rem 5rem 1rem 5rem;
+        }
+    }
+
+    @media (max-width: 500px) {
+
+
+        .container {
+            padding: 1rem 4rem 1rem 4rem;
+        }
+
+        .header {
+            font-size: 2rem;
+        }
+
+        .header-subtitle {
+            right: -40px;
+        }
+
+        .header-logo {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    @media (max-width: 450px) {
+
+
+        .description p {
+            font-size: 0.85rem;
+        }
+
+        .activate-btn {
+            padding: 4px 10px;
+        }
+
+        .activate-btn span {
+            font-size: 0.9rem;
+        }
+
+        .activate-btn-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .container {
+            padding: 1rem 2rem 1rem 2rem;
+        }
+
+        .header {
+            font-size: 1.75rem;
+        }
+
+        .header div {
+            margin: 0px 10px;
+        }
+
+        .header-subtitle {
+            right: -45px;
+        }
+
+        .header-logo {
+            width: 30px;
+            height: 30px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <!-- Content -->
+        <!-- Header -->
+        <a href="https://www.singularity.events" target="_blank" class="container-item header">
+            <img class="header-logo" src="/Images/singularity-logo-primary-1x2.png">
+            <div>SINGULARITY</div>
+        </a>
+        <hr class="hr">
+        <div class="sub-header">Your all in one platform for for organizing Events, tournaments & scrims for Apex
+            Legends</div>
+        <div class="container-content">
+            <div class="description">
+                <!-- Description -->
+                <div class="description-header">Email verification has expired 😞</div>
+                <br>
+                <p>No worries though! we have sent you another email verification. Please follow the link from there to
+                    verify your email again..
+                    Sorry for the inconvenience.</p>
+                <br>
+                <br>
+
+            </div>
+            <!-- Call to action -->
+            <!-- <a class="activate-btn" href="http://www.singularity.events/join" target="_blank" rel="noopener noreferrer">
+                <span>Go to Singularity</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="activate-btn-icon" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+
+            </a> -->
+            <br>
+            <br>
+            <br>
+
+            <!-- Footer -->
+            <div class="footer">
+                <!-- note -->
+                <p>Thank you for using <span style="font-weight: 600;">Singularity</span>.
+                    Visit <a href="https://www.singularity.events" class="note">Singularity.events</a>
+                </p>
+                <br>
+                <span>
+                    Copyright © 2021 - <a class="opaquelabs" target='_blank' href='https://www.opaquelabs.dev'>
+                        opaquelabs.dev </a> - All
+                    rights reserved
+                </span>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
