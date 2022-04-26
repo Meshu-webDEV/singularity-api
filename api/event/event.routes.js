@@ -282,7 +282,7 @@ router.get("/auto-update-status", async (req, res, next) => {
   try {
     await autoStartEvents();
     await autoEndEvents();
-    return res.send("ok");
+    return res.send("ok!");
   } catch (error) {
     console.log(error);
     return next(error);
