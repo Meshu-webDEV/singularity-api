@@ -659,11 +659,6 @@ function getExploreEvents(skip, sort, limit, meta) {
             },
           ]);
           // if not results found, resolve with empty pagination and empty events rather than 404 ERROR
-          console.log(
-            "Results: ",
-            results.events.map((e) => e.name),
-            results.total
-          );
           if (!results?.events)
             return resolve({
               pagination: {
