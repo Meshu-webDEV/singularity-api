@@ -1,3 +1,4 @@
+const { CLIENT } = require("../lib/configs");
 const { USER_ORGANIZATION_STATUS } = require("../lib/constants");
 const { title, footer, color, descriptionFooter } = require("./constants");
 const { notifierRenderStandings } = require("./utils");
