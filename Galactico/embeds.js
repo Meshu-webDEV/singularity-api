@@ -37,7 +37,9 @@ module.exports = {
         event.currentRound + 1
       }${"```"}
                     ${notifierRenderStandings(event.standingsTable)}
-                  *visit [Event page](https://discord.com) for more*
+                  *visit [Event page](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      }) for more*
                   \n
                   Want to get in touch? email me at Sensei@singularity.events
                   \n
@@ -65,7 +67,9 @@ module.exports = {
         event.currentRound + 1
       }${"```"}
                     ${notifierRenderStandings(event.standingsTable)}
-                  *visit [Event page](https://discord.com) for more*
+                  *visit [Event page](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      }) for more*
                   \n
                   Want to get in touch? email me at Sensei@singularity.events
                   \n
@@ -91,7 +95,9 @@ module.exports = {
                     \n
                     **📊 Final standings:**
                     ${notifierRenderStandings(event.standingsTable)}
-                  *visit [Event page](https://discord.com) for more*
+                  *visit [Event page](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      }) for more*
                   \n
                   Want to get in touch? email me at Sensei@singularity.events
                   \n
