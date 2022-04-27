@@ -25,7 +25,9 @@ module.exports = {
       description: `‎‏‏‎ ‎
                   \n **${event.name}** Has started!
                     - Total Rounds: **${event.rounds}**
-                    - Event page: **[${event.name}](https://discord.com)**
+                    - Event page: **[${event.name}](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      })**
                     - Organizer: ${
                       event.owner.organization_status ===
                       USER_ORGANIZATION_STATUS.APPROVED
@@ -55,7 +57,9 @@ module.exports = {
       description: `‎‏‏‎ ‎
                   \n **${event.name}** round ${event.currentRound} has ended!
                     - Total Rounds: **${event.rounds}**
-                    - Event page: **[${event.name}](https://discord.com)**
+                    - Event page: **[${event.name}](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      })**
                     - Organizer: ${
                       event.owner.organization_status ===
                       USER_ORGANIZATION_STATUS.APPROVED
@@ -86,7 +90,9 @@ module.exports = {
                   \n **${event.name}** has successfully ended!
                       Congratulations to the winners, and better luck for the rest..
                       \n
-                    - Event page: **[${event.name}](https://discord.com)**
+                    - Event page: **[${event.name}](${CLIENT.URL_ORIGIN}/${
+        event.uniqueid
+      })**
                     - Organizer: ${
                       event.owner.organization_status ===
                       USER_ORGANIZATION_STATUS.APPROVED
