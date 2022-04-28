@@ -74,7 +74,7 @@ userSchema.pre("findOneAndUpdate", async function (next) {
   if (existing) {
     this._update.username = `${
       this._update.username || this._update.display_name
-    }${await createUniqueCustomId(4, "1234567890")}`;
+    }#${await createUniqueCustomId(4, "1234567890")}`;
     this._update.altered = true;
   }
 

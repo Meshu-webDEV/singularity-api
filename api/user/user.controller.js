@@ -150,7 +150,7 @@ function editDisplayName(userid, username, displayName) {
       const user = await User.findOne({ _id: userid, isDeleted: false });
 
       // prettier-ignore
-      const isValid = await validateDisplayName(displayName, user.altered ? username.slice(0, -4) : username);
+      const isValid = await validateDisplayName(displayName, user.altered ? username.slice(0, -5) : username);
 
       // prettier-ignore
       if (!isValid) return reject(new Error(errorMessages.VALIDATE_DISPLAYNAME));
