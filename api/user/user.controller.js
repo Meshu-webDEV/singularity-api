@@ -147,7 +147,11 @@ function updateUserOrganizationStatus(userid, status, orgId) {
 function editDisplayName(userid, username, displayName) {
   return new Promise(async (resolve, reject) => {
     try {
-      const isValid = await validateDisplayName(displayName, username);
+      const user = await User.findOne({ _id: userid, isDeleted: false });
+
+      // prettier-ignore
+      const isValid = await validateDisplayName(displayName, user.altered ? username.slice(0, -4) : username);
+
       // prettier-ignore
       if (!isValid) return reject(new Error(errorMessages.VALIDATE_DISPLAYNAME));
       await User.updateOne(
