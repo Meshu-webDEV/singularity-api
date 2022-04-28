@@ -46,7 +46,7 @@ module.exports = new Schema({
   },
   altered: {
     type: Boolean,
-    required: false,
+    required: true,
     default: false,
   },
   isDeleted: {
