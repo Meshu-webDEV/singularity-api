@@ -66,10 +66,12 @@ const userSchema = new Schema({
 userSchema.pre("findOneAndUpdate", async function (next) {
   const existing = await this.model.find({ username: this._update.username });
 
-  if (existing)
+  if (existing) {
     this._update.username = `${
       this._update.username || this._update.display_name
     }${await createUniqueCustomId(4, "1234567890")}`;
+    this._update.altered = true;
+  }
 
   next();
 });

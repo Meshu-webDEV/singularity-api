@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const { USER_ORGANIZATION_STATUS } = require('../../lib/constants');
-const webhookSchema = require('../webhooks/webhook.schema');
+const mongoose = require("mongoose");
+const { USER_ORGANIZATION_STATUS } = require("../../lib/constants");
+const webhookSchema = require("../webhooks/webhook.schema");
 const Schema = mongoose.Schema;
 
 module.exports = new Schema({
@@ -24,7 +24,7 @@ module.exports = new Schema({
   strategy: {
     type: String,
     required: true,
-    default: 'local',
+    default: "local",
   },
   displayName: {
     type: String,
@@ -42,6 +42,11 @@ module.exports = new Schema({
   active: {
     type: Boolean,
     required: true,
+    default: false,
+  },
+  altered: {
+    type: Boolean,
+    required: false,
     default: false,
   },
   isDeleted: {
