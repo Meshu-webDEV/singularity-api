@@ -2384,6 +2384,11 @@ function nightbotRenderStandings(
       datetime
     )}. visit ${url ? url : "Singularity"} for more`;
 
+  if (status === eventStatus.COMPLETED)
+    return `✨ [${eventName.toUpperCase()}] | ${sortedStandings.map(
+      (s, i) => `#${i + 1} ${s.name}: ${s.points} -`
+    )} (Ended) visit ${url ? url : "Singularity"} for more`.replace(/,/g, " ");
+
   return `✨ [${eventName.toUpperCase()}] | ${sortedStandings.map(
     (s, i) => `#${i + 1} ${s.name}: ${s.points} -`
   )} (Round ${currentRound}/${totalRounds} in progress) visit ${
