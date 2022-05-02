@@ -42,8 +42,13 @@ app.use(
       }`,
       `${
         WEB_SERVER.ENV === "production"
-          ? ADMIN.URL_ORIGIN
+          ? CLIENT.MOBILE_URL_ORIGIN
           : "http://localhost:3001"
+      }`,
+      `${
+        WEB_SERVER.ENV === "production"
+          ? ADMIN.URL_ORIGIN
+          : "http://localhost:3002"
       }`,
     ],
     credentials: true,
