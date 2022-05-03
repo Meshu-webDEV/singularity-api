@@ -112,10 +112,6 @@ async function getUser(userid) {
         },
       ]);
 
-      console.log("===");
-      console.log(Util.inspect(user, false, 4, true));
-      console.log("===");
-
       if (!user) reject(new Error(errorMessages.UNAUTHORIZED));
 
       return resolve(user);

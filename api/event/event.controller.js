@@ -436,7 +436,6 @@ function updateEventEndRound(uniqueid, { data }, round, req) {
       const event = await Event.findOne({ uniqueid: uniqueid });
 
       if (parseInt(round) !== event.toObject().currentRound) {
-        console.log("parseInt");
         return reject(new Error(errorMessages.MALFORMED_INFO));
       }
 
@@ -548,13 +547,10 @@ function getExploreEvents(skip, sort, limit, meta) {
 
       const { type, filters } = meta;
       let results, events, total;
-      console.log("skip: ", skip);
-      console.log("limit: ", limit);
 
       switch (type) {
         // Initial load from client
         case EVENTS_SEARCH_ACTIONS.INITIAL:
-          console.log("=== Type: Initial");
           [results] = await Event.aggregate([
             {
               $facet: {
@@ -675,7 +671,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
         // Search load from client
         case EVENTS_SEARCH_ACTIONS.SEARCH:
-          console.log("=== Type: Search");
           [results] = await Event.aggregate([
             {
               $search: {
@@ -807,7 +802,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
         // Any filtered load from client
         case EVENTS_SEARCH_ACTIONS.FILTERED:
-          console.log("=== Type: Filtered");
           // Determine the aggregation pipeline stages
           const stagesBasedOnFilters = () => {
             // Search, Datetime & Status
@@ -817,7 +811,6 @@ function getExploreEvents(skip, sort, limit, meta) {
               filters?.status?.length &&
               filters?.term
             ) {
-              console.log("=== Search, Datetime & Status");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -843,7 +836,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Search & Datetime
             if (filters?.gte && filters?.lte && filters?.term) {
-              console.log("=== Search & Datetime");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -866,7 +858,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Search & Status
             if (filters?.status?.length && filters?.term) {
-              console.log("=== Search & Status");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -888,7 +879,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Datetime & Status
             if (filters?.gte && filters?.lte && filters?.status?.length) {
-              console.log("=== Datetime & Status");
               return {
                 $match: {
                   isPublic: true,
@@ -906,7 +896,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Search
             if (filters?.term) {
-              console.log("=== Search");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -925,7 +914,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Datetime
             if (filters?.gte && filters?.lte) {
-              console.log("=== Datetime");
               return {
                 $match: {
                   isPublic: true,
@@ -940,7 +928,6 @@ function getExploreEvents(skip, sort, limit, meta) {
 
             // Status
             if (filters?.status?.length) {
-              console.log("=== Status");
               return {
                 $match: {
                   isPublic: true,
@@ -1350,7 +1337,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
               filters?.status?.length &&
               filters?.term
             ) {
-              console.log("=== Search, Datetime & Status");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -1376,7 +1362,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Search & Datetime
             if (filters?.gte && filters?.lte && filters?.term) {
-              console.log("=== Search & Datetime");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -1399,7 +1384,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Search & Status
             if (filters?.status?.length && filters?.term) {
-              console.log("=== Search & Status");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -1421,7 +1405,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Datetime & Status
             if (filters?.gte && filters?.lte && filters?.status?.length) {
-              console.log("=== Datetime & Status");
               return {
                 $match: {
                   owner: ObjectId(userid.toString()),
@@ -1439,7 +1422,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Search
             if (filters?.term) {
-              console.log("=== Search");
               return {
                 $search: {
                   index: DATABASE_SEARCH_INDEXES.EVENTS,
@@ -1458,7 +1440,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Datetime
             if (filters?.gte && filters?.lte) {
-              console.log("=== Datetime");
               return {
                 $match: {
                   owner: ObjectId(userid.toString()),
@@ -1473,7 +1454,6 @@ function getMyEvents(skip, sort, limit, meta, userid) {
 
             // Status
             if (filters?.status?.length) {
-              console.log("=== Status");
               return {
                 $match: {
                   owner: ObjectId(userid.toString()),
@@ -2109,7 +2089,6 @@ function getExploreEventsByOrganizer(userid, skip, sort, limit, meta) {
       switch (type) {
         // Initial load from client
         case EVENTS_SEARCH_ACTIONS.INITIAL:
-          console.log("=== By-owner -> Type: Initial");
           [results] = await Event.aggregate([
             {
               $facet: {

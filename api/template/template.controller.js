@@ -66,13 +66,9 @@ async function exploreTemplates(skip, limit, meta, userid) {
       const { type, filters } = meta;
       let results, templates, total;
 
-      console.log(filters);
-      console.log("Skip: ", skip);
-
       switch (type) {
         // Initial load from client
         case TEMPLATES_SEARCH_ACTIONS.INITIAL:
-          console.log("=== Type: Initial");
           [results] = await Template.aggregate([
             {
               $facet: {
@@ -188,7 +184,6 @@ async function exploreTemplates(skip, limit, meta, userid) {
 
         // Search load from client
         case TEMPLATES_SEARCH_ACTIONS.SEARCH:
-          console.log("=== Type: Search");
           [results] = await Template.aggregate([
             {
               $search: {
@@ -356,7 +351,6 @@ async function getMyTemplates(skip, limit, meta, userid) {
       switch (type) {
         // Initial load from client
         case TEMPLATES_SEARCH_ACTIONS.INITIAL:
-          console.log("=== Type: Initial");
           [results] = await Template.aggregate([
             {
               $facet: {
@@ -472,7 +466,6 @@ async function getMyTemplates(skip, limit, meta, userid) {
 
         // Search load from client
         case TEMPLATES_SEARCH_ACTIONS.SEARCH:
-          console.log("=== Type: Search");
           [results] = await Template.aggregate([
             {
               $search: {
@@ -708,9 +701,6 @@ async function updateTemplateById(userid, uniqueid, data) {
 async function incTemplateUsedById(userid, uniqueid) {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("====== template controller: ");
-      console.log("userid: ", userid);
-      console.log("uniqueid: ", uniqueid);
       // prettier-ignore
       const updated = await Template.updateOne(
         {
@@ -721,7 +711,6 @@ async function incTemplateUsedById(userid, uniqueid) {
           $inc: { used: 1 },
         }
       );
-      console.log("updated: ", updated);
       resolve();
     } catch (error) {
       reject(new Error(errorMessages.INTERNAL));

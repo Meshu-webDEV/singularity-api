@@ -121,7 +121,6 @@ async function isEventOwner(req, res, next) {
 
     return next();
   } catch (error) {
-    console.log("slut");
     return next(new Error(errorMessages.UNAUTHORIZED));
   }
 }

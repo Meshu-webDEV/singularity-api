@@ -21,9 +21,6 @@ function findOrCreateUser(user) {
         { __v: 0, password: 0 }
       );
 
-      // console.log("== GOOGLE USER:", user);
-      // console.log("== DATABASE USER:", OAuthUser);
-
       if (OAuthUser) return resolve(OAuthUser);
 
       // If OAuthId is not present, check if the email is in use

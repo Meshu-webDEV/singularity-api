@@ -81,7 +81,6 @@ router.delete(
   async (req, res, next) => {
     try {
       const { uniqueid } = req.params;
-      console.log("delete, uniqueid: ", uniqueid);
       await deleteEvent(uniqueid, req.user._id);
       return res.send();
     } catch (error) {
@@ -376,9 +375,6 @@ router.post("/by-owner/:id", async (req, res, next) => {
   let { skip = 0, sort = "asc", limit = 8 } = req.query;
 
   try {
-    console.log("ID: ", id);
-    console.log("Misc: ", skip, sort, limit);
-
     const result = await getExploreEventsByOrganizer(
       id,
       skip,
@@ -427,9 +423,6 @@ router.get("/search-my-events", isAuth, userExist, async (req, res, next) => {
   // Sort validation
   sort = sort !== "asc" && sort !== "desc" ? "asc" : sort;
 
-  // validated params
-  console.log("term:", term, "skip:", skip, "sort:", sort, "limit:", limit);
-
   try {
     const { events, total } = await searchMyEvents(
       req.user._id,
@@ -464,9 +457,6 @@ router.get("/my-recent-events", isAuth, userExist, async (req, res, next) => {
   limit = limit < 0 ? 8 : limit;
   // Sort validation
   sort = sort !== "asc" && sort !== "desc" ? "asc" : sort;
-
-  // validated params
-  console.log("sort:", sort, "limit:", limit);
 
   try {
     console.log(req.user);
